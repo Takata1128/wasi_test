@@ -4,14 +4,14 @@ pub extern "C" fn hello() {
 }
 
 #[no_mangle]
-pub extern "C" fn fib(n: usize) {
+pub extern "C" fn fib(n: usize) -> i32 {
     let mut v: Vec<i32> = vec![0; n + 1];
     v[0] = 1;
     v[1] = 1;
     for i in 2..n + 1 {
         v[i] = (v[i - 1] + v[i - 2]) % 10_000;
     }
-    println!("{}", v[n]);
+    v[n]
 }
 
 #[no_mangle]
